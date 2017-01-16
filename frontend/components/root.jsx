@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, hashHistory, Link } from 'react-router';
 
 import App from './app/app';
 import Header from './header/header';
+import Welcome from './welcome/welcome';
 
 const Root = ({store}) => {
 
@@ -11,6 +12,7 @@ const Root = ({store}) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path="/" component={App}>
+          <Route path="/welcome" component={Welcome} />
 
         </Route>
       </Router>
