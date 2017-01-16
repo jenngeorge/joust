@@ -22,4 +22,10 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def current
+    @user = current_user
+    render 'api/users/current_user', formats: :json
+  end
+  
 end
