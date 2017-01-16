@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index]
   end
 
-
+  get '*path', to: 'static_pages#root'
 end
