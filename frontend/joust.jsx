@@ -5,8 +5,9 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //testing
-import * as APIUtil from './util/session_api_util';
+import * as APIUtil from './util/user_api_util';
 import {fetchCurrentUser} from './actions/session_actions';
+import * as Actions from './actions/user_actions';
 
 document.addEventListener("DOMContentLoaded", ()=> {
   let store;
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
   //testing
   window.store = store;
-  window.signout = APIUtil.logout;
-  window.fetchCurrentUser = fetchCurrentUser;
+  window.fetchUser = APIUtil.fetchUser;
+  window.fetchUsers = APIUtil.fetchUsers;
+  window.fetchUsersAction = Actions.fetchUsers;
+  window.fetchUserAction = Actions.fetchUser;
 });
