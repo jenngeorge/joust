@@ -1,13 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
-const Header = () => {
+class Header extends React.Component{
+  constructor(){
+    super();
 
-  return(
-      <div>
-        Hi I'm Header
-      </div>
-    );
-};
+    this.handleSignout = this.handleSignout.bind(this);
+  }
 
-export default Header;
+  handleSignout(){
+    this.props.signout();
+  }
+
+
+
+  render(){
+    let sessionButtons = () => {
+      if (this.props.session.currentUser){
+        return(
+          <div className="session-buttons">
+            <button onClick={this.handleSignout}>Sign Out</button>
+          </div>
+        );
+      }
+    }
+
+    return(
+        <div className="nav-container">
+          {sessionButtons()}
+        </div>
+      );
+  }
+
+}
+
+export default withRouter(Header);

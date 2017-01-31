@@ -6,6 +6,7 @@ import Root from './components/root';
 
 //testing
 import * as APIUtil from './util/user_api_util';
+import * as SessionUtil from './util/session_api_util';
 import {fetchCurrentUser} from './actions/session_actions';
 import * as Actions from './actions/user_actions';
 
@@ -25,6 +26,15 @@ document.addEventListener("DOMContentLoaded", ()=> {
   window.store = store;
   window.fetchUser = APIUtil.fetchUser;
   window.fetchUsers = APIUtil.fetchUsers;
+
+  window.signin = SessionUtil.signin;
+  window.signup = SessionUtil.signup;
+  window.signout = SessionUtil.signout;
+
   window.fetchUsersAction = Actions.fetchUsers;
   window.fetchUserAction = Actions.fetchUser;
 });
+
+// signup({user: {email: "testtest2@email.com", password: "password", password_confirmation: "password"}}).then(response => console.log(response))
+
+// signin({user: {email: "testtest2@email.com", password: "password", remember_me: 1}}).then(response => console.log(response))
