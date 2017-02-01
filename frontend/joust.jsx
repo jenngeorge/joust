@@ -7,7 +7,7 @@ import Root from './components/root';
 //testing
 import * as APIUtil from './util/user_api_util';
 import * as SessionUtil from './util/session_api_util';
-import {fetchCurrentUser} from './actions/session_actions';
+import {fetchCurrentUser, signout, signup, signin} from './actions/session_actions';
 import * as Actions from './actions/user_actions';
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
   window.fetchUser = APIUtil.fetchUser;
   window.fetchUsers = APIUtil.fetchUsers;
 
-  window.signin = SessionUtil.signin;
-  window.signup = SessionUtil.signup;
-  window.signout = SessionUtil.signout;
+  window.signin = signin;
+  window.signup = signup;
+  window.signout = signout;
 
   window.fetchUsersAction = Actions.fetchUsers;
   window.fetchUserAction = Actions.fetchUser;

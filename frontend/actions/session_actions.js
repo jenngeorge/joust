@@ -7,6 +7,19 @@ export const signout = () => dispatch => (
   APIUtil.signout().then(user => dispatch(receiveCurrentUser(null)))
 );
 
+export const signup = user => dispatch => (
+  APIUtil.signup(user)
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+      err => dispatch(receiveErrors(err.responseJSON)))
+);
+
+export const signin = user => dispatch => (
+  APIUtil.signin(user)
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+      err => dispatch(receiveErrors(err.responseJSON)))
+);
+
+
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser

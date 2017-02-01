@@ -18,12 +18,19 @@ class Header extends React.Component{
     let sessionButtons = () => {
       if (this.props.session.currentUser){
         return(
-          <div className="session-buttons">
+          <div className="signout-button">
             <button onClick={this.handleSignout}>Sign Out</button>
           </div>
         );
+      } else {
+        return(
+          <div className="signin-buttons">
+            <Link to="/signin">Sign in</Link>
+            <Link to="/signup">Sign up</Link>
+          </div>
+        );
       }
-    }
+    };
 
     return(
         <div className="nav-container">

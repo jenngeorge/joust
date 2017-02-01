@@ -1,9 +1,2 @@
-<script id="bootstrap-current-user" type="text/javascript">
-  <% if user_signed_in? %>
-   window.currentUser = <%= render('api/users/user.json.jbuilder',
-   user: current_user).html_safe %>
-   window.authenticityToken = "<%= form_authenticity_token %>"
-  <% end %>
-</script>
 
 <main id="root"></main>
