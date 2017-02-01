@@ -16,7 +16,7 @@ const Root = ({store}) => {
   const _ensureSignedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (!currentUser) {
-      replace('/welcome');
+      replace('/');
     }
   };
 
@@ -33,12 +33,10 @@ const Root = ({store}) => {
         <Route path="/" component={App}>
         <Route path="/signin" component={SessionFormContainer}/>
         <Route path="/signup" component={SessionFormContainer}/>
-        <Route path="/welcome" component={Welcome} />
-        <IndexRoute component={Home}>
-          <Route path="/users/:userId"
-            component={UserDetailContainer}
-            onEnter={_ensureSignedIn}/>
-        </IndexRoute>
+        <IndexRoute component={Welcome} />
+        <Route path ="/home" component={Home} onEnter={_ensureSignedIn}>
+          <Route path="/users/:userId" component={UserDetailContainer}/>
+        </Route>
 
         </Route>
       </Router>

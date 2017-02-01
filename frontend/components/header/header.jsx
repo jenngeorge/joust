@@ -9,7 +9,7 @@ class Header extends React.Component{
   }
 
   handleSignout(){
-    this.props.signout();
+    this.props.signout().then(this.props.router.replace("/welcome"));
   }
 
 
