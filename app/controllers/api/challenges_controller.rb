@@ -11,8 +11,9 @@ class Api::ChallengesController < ApplicationController
 
   def destroy
     @challenge = Challenge.find(params[:id])
-    @challenge.destroy
-
+    @challenge = @challenge.destroy
+    
+    render :show
   end
 
   def show

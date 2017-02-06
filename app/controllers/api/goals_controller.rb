@@ -11,8 +11,9 @@ class Api::GoalsController < ApplicationController
 
   def destroy
     @goal = Goal.find(params[:id])
-    @goal.destroy
+    @goal = @goal.destroy
 
+    render :show
   end
 
   def show
