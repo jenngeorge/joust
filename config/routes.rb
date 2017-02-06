@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     resources :users, only: [:show, :index]
     resources :goals
-    resources :challenges
+    resources :challenges, only: [:create, :destroy, :show, :index]
   end
 
   get '*path', to: 'static_pages#root'

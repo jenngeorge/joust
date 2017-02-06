@@ -1,5 +1,36 @@
 class Api::GoalsController < ApplicationController
 
-  # TODO: CRUD
-  
+  def create
+    @goal = Goal.new(goal_params)
+    if @goal.save
+      render json: ["saved #{@goal.name}"]
+    else
+      render json: @goal.errors.full_messages, status: 422
+    end
+  end
+
+  def destroy
+    @goal = Goal.find(params[:id])
+    @goal.destroy
+
+  end
+
+  def show
+    @goal = Goal.find(params[:id])
+  end
+
+  def index
+    @goals = Goal.all
+  end
+
+  def goal_params
+    params.require(:goal).permit(
+      :name,
+      :description,
+      :points,
+      :active,
+      :user_id
+    )
+  end
+
 end

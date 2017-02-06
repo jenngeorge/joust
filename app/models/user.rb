@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many :received_challenges,
     class_name: "Challenge",
     foreign_key: :challengee_id
+
+  has_many :goals,
+    class_name: "Goal",
+    foreign_key: :user_id
 end
