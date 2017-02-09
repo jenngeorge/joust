@@ -8,7 +8,7 @@ const UserIndex = ({users}) => {
     <div className="user-index-container">
       {Object.keys(users).map(idx => (
         <li key={idx}>
-          <Link to={{ pathname: '/users/'+ users[idx].id, query: { user_id: users[idx].id } }}>
+          <Link to={`/users/${users[idx].id}`}>
             {users[idx].email}
           </Link>
         </li>

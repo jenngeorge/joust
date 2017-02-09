@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import ChallengeFormContainer from '../challenges/challenge_form_container';
 
 class UserDetail extends React.Component {
 
@@ -17,6 +18,7 @@ class UserDetail extends React.Component {
     return(
         <div>
           {this.props.user.email}
+          <ChallengeFormContainer />
         </div>
       );
   }
