@@ -12,7 +12,9 @@ class Api::UsersController < ApplicationController
   # You can also override after_sign_in_path_for and after_sign_out_path_for to customize your redirect hooks.
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:given_challenges, :received_challenges)
+      .find(params[:id])
+
     render 'api/users/show'
   end
 

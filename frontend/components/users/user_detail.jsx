@@ -15,10 +15,40 @@ class UserDetail extends React.Component {
   }
 
   render(){
+    let receivedChallenges, givenChallenges;
+    if (this.props.user.received_challenges && this.props.user.given_challenges) {
+      receivedChallenges = this.props.user.received_challenges
+      .map(challenge => (
+        <div key={challenge.id}>
+          Challenged by: {challenge.challenger_id}
+          Goal: {challenge.goal_id}
+          Start: {challenge.start_datetime}
+          End: {challenge.end_datetime}
+        </div>
+      ));
+
+      givenChallenges = this.props.user.given_challenges
+        .map(challenge => (
+          <div key={challenge.id}>
+            Challenged: {challenge.challengee_id}
+            Goal: {challenge.goal_id}
+            Start: {challenge.start_datetime}
+            End: {challenge.end_datetime}
+          </div>
+        ));
+    }
+
+
     return(
         <div>
           {this.props.user.email}
           <ChallengeFormContainer />
+
+        <h3>Challenges Made</h3>
+        {givenChallenges}
+
+        <h3>Challenges Received</h3>
+        {receivedChallenges}
         </div>
       );
   }
