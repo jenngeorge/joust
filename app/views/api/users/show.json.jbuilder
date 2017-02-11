@@ -4,5 +4,7 @@ json.extract! @user,
   :id,
   :username,
   :email,
-  :received_challenges, 
+  :first_name,
+  :last_name,
+  :received_challenges,
   :given_challenges

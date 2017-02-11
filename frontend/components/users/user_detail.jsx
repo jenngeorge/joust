@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ChallengeFormContainer from '../challenges/challenge_form_container';
+import UserFormContainer from './user_form_container';
 
 class UserDetail extends React.Component {
 
@@ -11,6 +12,14 @@ class UserDetail extends React.Component {
   componentWillUpdate(nextProps){
     if (nextProps.params.userId !== this.props.params.userId){
       this.props.fetchUser(nextProps.params.userId);
+    }
+  }
+
+  userActionOptions(){
+    if (this.props.user.id !== this.props.currentUser.id){
+      return <ChallengeFormContainer />;
+    } else {
+      return <UserFormContainer />;
     }
   }
 
@@ -39,18 +48,21 @@ class UserDetail extends React.Component {
     }
 
 
+
+
     return(
-        <div>
-          {this.props.user.email}
-          <ChallengeFormContainer />
+      <div>
+        {this.props.user.email}
+
+        {this.userActionOptions()}
 
         <h3>Challenges Made</h3>
         {givenChallenges}
 
         <h3>Challenges Received</h3>
         {receivedChallenges}
-        </div>
-      );
+      </div>
+    );
   }
 }
 

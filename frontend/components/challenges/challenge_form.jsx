@@ -32,7 +32,8 @@ class ChallengeForm extends React.Component {
       challenge.challengee_id = this.props.user.id;
     }
 		e.preventDefault();
-		this.props.createChallenge({challenge});
+		this.props.createChallenge({challenge})
+      .then(this.props.fetchUser(this.props.user.id));
 	}
 
 

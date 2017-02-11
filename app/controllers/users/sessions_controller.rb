@@ -34,7 +34,7 @@ respond_to :json
 
   def current
     @user = current_user
-    render 'api/users/current_user', formats: :json
+    render 'api/users/show'
   end
 
 end
