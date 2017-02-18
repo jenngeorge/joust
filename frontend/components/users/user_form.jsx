@@ -59,7 +59,7 @@ class UserForm extends React.Component {
                 onChange={this.update("email")} />
             </label>
 
-          <input type="submit" value="Submit" />
+          <button><input type="submit" value="Submit" /></button>
         </form>
       </div>
     );

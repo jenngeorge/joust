@@ -8,7 +8,6 @@ const ChallengesReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_CHALLENGE:
-      debugger
       return merge({}, state, {[action.challenge.id]: action.challenge});
     case RECEIVE_CHALLENGES:
       return action.challenges;

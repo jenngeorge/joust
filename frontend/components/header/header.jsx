@@ -28,8 +28,8 @@ class Header extends React.Component{
       } else {
         return(
           <div className="signin-buttons">
-            <Link to="/signin">Sign in</Link>
-            <Link to="/signup">Sign up</Link>
+            <button><Link to="/signin">Sign in</Link></button>
+            <button><Link to="/signup">Sign up</Link></button>
           </div>
         );
       }

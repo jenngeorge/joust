@@ -12,16 +12,16 @@ class Api::ChallengesController < ApplicationController
   def destroy
     @challenge = Challenge.find(params[:id])
     @challenge = @challenge.destroy
-    
+
     render :show
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.includes(:goal).find(params[:id])
   end
 
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.includes(:goal).all
   end
 
   def challenge_params

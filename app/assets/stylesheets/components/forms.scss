@@ -1,0 +1,50 @@
+.auth-form-container{
+  width: 300px;
+  padding: 20px;
+  border: 1px solid $black;
+  margin: 0 auto;
+}
+
+.user-form-container label {
+  display: block;
+}
+
+
+.start-datetimepicker, .end-datetimepicker{
+  display: inline-block;
+  width: 40%;
+  margin: $margin-basic;
+}
+
+
+.challenge-vs {
+  font-weight: bold;
+  display: block;
+}
+
+.challenge-form {
+  padding: $padding-container;
+  margin: $padding-container;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+input[type="radio"] {
+  margin: 10px;
+}
+
+input[type="text"], input[type="password"] {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid $primary-color;
+}
+
+.form-goal-title {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.form-goal-description {
+  display: inline-block;
+  margin-left: 10px;
+}

@@ -13,6 +13,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.includes(:given_challenges, :received_challenges)
+      .includes(:goals)
       .find(params[:id])
 
     render 'api/users/show'

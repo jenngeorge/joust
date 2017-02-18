@@ -1,7 +1,15 @@
 .sidebar-container{
+  position: fixed;
+  top: 0;
   height: 100vh;
   border: 1px solid $black;
-  width: 250px;
+  width: 200px;
   float: left;
+  background-color: $primary-color;
+  padding: $padding-container;
+  color: $white;
+}
 
+.user-index-container li {
+  list-style: none;
 }

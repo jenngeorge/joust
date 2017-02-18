@@ -9,7 +9,7 @@ const UserIndex = ({users}) => {
       {Object.keys(users).map(idx => (
         <li key={idx}>
           <Link to={`/users/${users[idx].id}`}>
-            {users[idx].email}
+            {users[idx].username}
           </Link>
         </li>
       ))}

@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
 		if (this.props.formType === "signin") {
 			return <Link to="/signup">sign up instead</Link>;
 		} else {
-			return <Link to="/signin">log in instead</Link>;
+			return <Link to="/signin">sign in instead</Link>;
 		}
 	}
 
@@ -73,7 +73,7 @@ class SessionForm extends React.Component {
 								className="signin-input" />
 						</label>
 						<br/>
-						<input type="submit" value="Submit" />
+						<button><input type="submit" value="Submit" /></button>
 					</div>
 				</form>
 			</div>

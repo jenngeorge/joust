@@ -28,9 +28,12 @@ class UserDetail extends React.Component {
     if (this.props.user.received_challenges && this.props.user.given_challenges) {
       receivedChallenges = this.props.user.received_challenges
       .map(challenge => (
-        <div key={challenge.id}>
-          Challenged by: {challenge.challenger_id}
-          Goal: {challenge.goal_id}
+        <div className="challenge-item" key={challenge.id}>
+          <div className="challenge-item-info">
+            Challenged by: {challenge.challenger.username}
+            {"   |   "}
+            Goal: {challenge.goal.name}
+          </div>
           Start: {challenge.start_datetime}
           End: {challenge.end_datetime}
         </div>
@@ -38,9 +41,12 @@ class UserDetail extends React.Component {
 
       givenChallenges = this.props.user.given_challenges
         .map(challenge => (
-          <div key={challenge.id}>
-            Challenged: {challenge.challengee_id}
-            Goal: {challenge.goal_id}
+          <div className="challenge-item" key={challenge.id}>
+            <div className="challenge-item-info">
+              Challenged: {challenge.challengee.username}
+              " | "
+              Goal: {challenge.goal.name}
+            </div>
             Start: {challenge.start_datetime}
             End: {challenge.end_datetime}
           </div>
@@ -51,8 +57,12 @@ class UserDetail extends React.Component {
 
 
     return(
-      <div>
-        {this.props.user.email}
+      <div className="user-detail-container">
+        <section className="user-info">
+          <h2>{this.props.user.username}</h2>
+          {this.props.user.email}
+        </section>
+
 
         {this.userActionOptions()}
 

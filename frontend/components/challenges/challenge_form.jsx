@@ -46,43 +46,45 @@ class ChallengeForm extends React.Component {
             value={this.props.goals[key].id}
             checked={this.state.goal_id === `${this.props.goals[key].id}`}
             onChange={this.update("goal_id")}/>
-          {this.props.goals[key].name}:
-          {this.props.goals[key].description}
+          <div className="form-goal-title">
+            {this.props.goals[key].name}:
+          </div>
+          <div className="form-goal-description">
+            {this.props.goals[key].description}
+          </div>
         </div>
       );
     });
 
     return(
       <div className="challenge-form-container">
+        <h3>New Challenge </h3>
         <form onSubmit={this.handleSubmit} className="challenge-form">
-            <label> You vs. {this.props.user.email}
-              <input type="text"
-                value={this.state.challengee}
-                onChange={this.update("challengee_id")} />
-            </label>
 
-            <div className="start-datetimepicker">
-              <Datetime value={this.state.start_datetime}
-                inputProps={{readOnly:true, placeholder: "Start Date and Time"}}
-                closeOnSelect={true}
-                onChange={(newStart) => (this.setState({
-                  start_datetime: newStart._d
-                })
-              )}/>
-            </div>
-            <div className="end-datetimepicker">
-              <Datetime value={this.state.end_datetime}
-                inputProps={{readOnly:true, placeholder: "Start Date and Time"}}
-                closeOnSelect={true}
-                onChange={(newEnd) => (this.setState({
-                  end_datetime: newEnd._d
-                })
-              )}/>
+          You vs {this.props.user.username}
+          <br />
+          <div className="start-datetimepicker">
+            <Datetime value={this.state.start_datetime}
+              inputProps={{readOnly:true, placeholder: "Start Date and Time"}}
+              closeOnSelect={true}
+              onChange={(newStart) => (this.setState({
+                start_datetime: newStart._d
+              })
+            )}/>
+          </div>
+          <div className="end-datetimepicker">
+            <Datetime value={this.state.end_datetime}
+              inputProps={{readOnly:true, placeholder: "End Date and Time"}}
+              closeOnSelect={true}
+              onChange={(newEnd) => (this.setState({
+                end_datetime: newEnd._d
+              })
+            )}/>
           </div>
 
           {selectGoal}
 
-          <input type="submit" value="Submit" />
+          <button><input type="submit" value="Submit" /></button>
         </form>
       </div>
     );
