@@ -29,13 +29,15 @@ class UserDetail extends React.Component {
       receivedChallenges = this.props.user.received_challenges
       .map(challenge => (
         <div className="challenge-item" key={challenge.id}>
-          <div className="challenge-item-info">
-            Challenged by: {challenge.challenger.username}
-            {"   |   "}
-            Goal: {challenge.goal.name}
-          </div>
-          Start: {challenge.start_datetime}
-          End: {challenge.end_datetime}
+          <Link to={`/challenges/${challenge.id}`}>
+            <div className="challenge-item-info">
+              Challenged by: {challenge.challenger.username}
+              {"   |   "}
+              Goal: {challenge.goal.name}
+            </div>
+            Start: {challenge.start_datetime}
+            End: {challenge.end_datetime}
+          </Link>
         </div>
       ));
 
@@ -52,9 +54,6 @@ class UserDetail extends React.Component {
           </div>
         ));
     }
-
-
-
 
     return(
       <div className="user-detail-container">

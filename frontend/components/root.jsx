@@ -7,6 +7,7 @@ import Header from './header/header';
 import Welcome from './welcome/welcome';
 import Home from './app/home';
 import UserDetailContainer from './users/user_detail_container';
+import ChallengeDetailContainer from './challenges/challenge_detail_container';
 import SessionFormContainer from './session/session_form_container';
 
 
@@ -36,6 +37,7 @@ const Root = ({store}) => {
         <IndexRoute component={Welcome} />
         <Route path ="/home" component={Home} onEnter={_ensureSignedIn}>
           <Route path="/users/:userId" component={UserDetailContainer} />
+          <Route path="/challenges/:challengeId" component={ChallengeDetailContainer} />
         </Route>
 
         </Route>

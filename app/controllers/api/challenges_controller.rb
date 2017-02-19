@@ -17,7 +17,9 @@ class Api::ChallengesController < ApplicationController
   end
 
   def show
-    @challenge = Challenge.includes(:goal).find(params[:id])
+    @challenge = Challenge.includes(:challengee, :challenger)
+      .includes(:goal)
+      .find(params[:id])
   end
 
   def index
