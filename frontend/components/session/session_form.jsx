@@ -8,8 +8,11 @@ class SessionForm extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(nextProps) {
 		this.redirectIfLoggedIn();
+		if (this.props.formType !== nextProps.formType){
+			this.props.clearErrors();
+		}
 	}
 
 	redirectIfLoggedIn() {
@@ -41,9 +44,9 @@ class SessionForm extends React.Component {
 	renderErrors() {
 		return(
 			<ul>
-				{this.props.errors.map((error, i) => (
+				{Object.keys(this.props.errors).map((error, i) => (
 					<li key={`error-${i}`}>
-						{error}
+						{`${error} ${this.props.errors[error][0]}`}
 					</li>
 				))}
 			</ul>

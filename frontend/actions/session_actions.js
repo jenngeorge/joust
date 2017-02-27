@@ -2,6 +2,7 @@ import * as APIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const signout = () => dispatch => (
   APIUtil.signout().then(user => dispatch(receiveCurrentUser(null)))
@@ -13,11 +14,20 @@ export const signup = user => dispatch => (
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const signin = user => dispatch => (
-  APIUtil.signin(user)
+export const signin = user => dispatch => {
+
+  return(
+    APIUtil.signin(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-      err => dispatch(receiveErrors(err.responseJSON)))
-);
+      err => {
+        if (err.responseJSON){
+          dispatch(receiveErrors(err.responseJSON));
+        } else {
+          dispatch(receiveErrors({Unauthorized: [err.responseText]}));
+        }
+      })
+  );
+};
 
 
 export const receiveCurrentUser = currentUser => ({
@@ -28,6 +38,10 @@ export const receiveCurrentUser = currentUser => ({
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });
 
 export const fetchCurrentUser = () => dispatch => (

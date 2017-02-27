@@ -15,21 +15,22 @@ respond_to :json
 
     resource.save
     yield resource if block_given?
-     if resource.persisted?
-       if resource.active_for_authentication?
-         sign_up(resource_name, resource)
-         render json: resource.as_json, status: 201
-       else
-         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-         expire_data_after_sign_in!
-        #  respond_with resource, location: after_inactive_sign_up_path_for(resource)
-       end
-     else
-       clean_up_passwords resource
-       set_minimum_password_length
-       respond_with resource
-     end
+    if resource.persisted?
+      if resource.active_for_authentication?
+        sign_up(resource_name, resource)
+        render json: resource.as_json, status: 201
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      render json: resource.errors.messages.as_json, status: 401
     end
+  end
+
 
   # GET /resource/edit
   # def edit
