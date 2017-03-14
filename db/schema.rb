@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -24,11 +23,10 @@ ActiveRecord::Schema.define(version: 20170206004810) do
     t.datetime "end_datetime",   null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["challengee_id"], name: "index_challenges_on_challengee_id", using: :btree
+    t.index ["challenger_id"], name: "index_challenges_on_challenger_id", using: :btree
+    t.index ["goal_id"], name: "index_challenges_on_goal_id", using: :btree
   end
-
-  add_index "challenges", ["challengee_id"], name: "index_challenges_on_challengee_id", using: :btree
-  add_index "challenges", ["challenger_id"], name: "index_challenges_on_challenger_id", using: :btree
-  add_index "challenges", ["goal_id"], name: "index_challenges_on_goal_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.string   "name",                        null: false
@@ -38,9 +36,8 @@ ActiveRecord::Schema.define(version: 20170206004810) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "user_id",                     null: false
+    t.index ["user_id"], name: "index_goals_on_user_id", using: :btree
   end
-
-  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -58,9 +55,8 @@ ActiveRecord::Schema.define(version: 20170206004810) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

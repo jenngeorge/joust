@@ -1,4 +1,4 @@
-class Goal < ActiveRecord::Base
+class Goal < ApplicationRecord
   validates :name, :points, presence: true
 
   has_many :challenges
@@ -6,5 +6,5 @@ class Goal < ActiveRecord::Base
     class_name: "User",
     foreign_key: :user_id
 
-  has_many :challenges 
+  has_many :challenges
 end

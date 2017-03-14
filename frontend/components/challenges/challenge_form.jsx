@@ -33,7 +33,15 @@ class ChallengeForm extends React.Component {
     }
 		e.preventDefault();
 		this.props.createChallenge({challenge})
-      .then(this.props.fetchUser(this.props.user.id));
+      .then(this.props.fetchUser(this.props.user.id)
+      .then(this.setState({
+        challenger_id: this.props.currentUser.id,
+        challengee_id: this.props.user.id || "",
+        goal_id: "",
+        start_datetime: "",
+        end_datetime: ""
+      })
+    ));
 	}
 
 

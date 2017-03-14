@@ -1,4 +1,4 @@
-class Challenge < ActiveRecord::Base
+class Challenge < ApplicationRecord
   validates :challenger_id,
             :challengee_id, :goal_id,
             :start_datetime,
