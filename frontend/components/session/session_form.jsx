@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
 		super(props);
 		this.state = { email: "", password: "" };
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.switchFormLink = this.switchFormLink.bind(this);
 	}
 
 	componentDidUpdate(nextProps) {
@@ -30,15 +31,28 @@ class SessionForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const user = this.state;
-		this.props.processForm({user});
+		if (this.props.formType === "signup"){
+			this.props.signup({user}).then(()=> {
+				if (this.props.currentUser){
+					this.props.closeModal();
+				}
+			});
+		} else {
+			this.props.signin({user}).then(()=> {
+				if (this.props.currentUser){
+					this.props.closeModal();
+				}
+			});
+		}
 	}
 
-	navLink() {
-		if (this.props.formType === "signin") {
-			return <Link to="/signup">sign up instead</Link>;
-		} else {
-			return <Link to="/signin">sign in instead</Link>;
-		}
+	switchFormLink() {
+
+		return (
+			<span onClick={this.props.switchForm}>
+				{this.props.formType === "signup" ? "sign in" : "sign up"}
+			</span>
+		);
 	}
 
 	renderErrors() {
@@ -56,9 +70,12 @@ class SessionForm extends React.Component {
 	render() {
 		return (
 			<div className="signin-form-container">
+				<i className="modal-close fa fa-times"
+					aria-hidden="true"
+					onClick={this.props.closeModal} />
 				<form onSubmit={this.handleSubmit} className="signin-form-box">
 					<br/>
-					Please {this.props.formType} or {this.navLink()}
+					Please {this.props.formType} or {this.switchFormLink()}
 					{this.renderErrors()}
 					<div className="signin-form">
 						<br/>
