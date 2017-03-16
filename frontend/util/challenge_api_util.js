@@ -6,6 +6,15 @@ export const createChallenge = (challenge) => {
   });
 };
 
+export const updateChallenge = (id, challenge) => {
+  return $.ajax({
+    method: 'patch',
+    url: `/api/challenges/${id}`,
+    data: challenge
+  });
+};
+
+
 export const deleteChallenge = (id) => {
   return $.ajax({
     method: "delete",

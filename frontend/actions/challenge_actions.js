@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/challenge_api_util';
 import {receiveErrors, RECEIVE_ERRORS} from './session_actions';
+import {fetchUser} from './user_actions';
 
 export const RECEIVE_CHALLENGE = "RECEIVE_CHALLENGE";
 export const RECEIVE_CHALLENGES = "RECEIVE_CHALLENGES";
@@ -9,6 +10,11 @@ export const createChallenge = challenge => dispatch => (
   APIUtil.createChallenge(challenge)
     .then(createdChallenge => dispatch(receiveChallenge(createdChallenge)),
       err => dispatch(receiveErrors(err.responseJSON)))
+);
+
+export const updateChallenge = (id, challenge) => dispatch => (
+  APIUtil.updateChallenge(id, challenge)
+    .then(() => dispatch(fetchUser(window.currentUser.id)))
 );
 
 export const receiveChallenge = challenge => ({

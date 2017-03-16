@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
+import { updateChallenge } from '../../actions/challenge_actions';
 import UserDetail from './user_detail';
 
 const mapStateToProps = (state) => ({
@@ -8,7 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: (id) => dispatch(fetchUser(id))
+  fetchUser: (id) => dispatch(fetchUser(id)),
+  updateChallenge: (id, challenge) => dispatch(updateChallenge(id, challenge))
 });
 
 export default connect(
